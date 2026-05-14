@@ -8,8 +8,11 @@ A ideia do projeto foi criar uma aplicação simples, funcional e organizada, on
 
 ## 🧑‍🎓 Alunos 
 **Gabrielly Rodrigues**
+
 **Geovanna Almeida**
+
 **Isabelle**
+
 **Josinaldo Xavier**
 
 ## 📸 Preview do projeto
