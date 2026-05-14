@@ -1,33 +1,80 @@
-# DevForum
+# 💬 DevForum
 
-DevForum é um Mini Fórum de Perguntas e Respostas desenvolvido com Django e Python.
+O **DevForum** é um mini fórum de perguntas e respostas que desenvolvi como projeto acadêmico utilizando **Python** e **Django**.
 
-## Funcionalidades
+A ideia do projeto foi criar uma aplicação simples, funcional e organizada, onde usuários podem se cadastrar, fazer login, publicar perguntas, responder dúvidas e interagir com outros usuários. Também personalizei a interface para deixar o sistema mais moderno, com fundo branco, cards arredondados e detalhes em rosa.
 
-- Cadastro de usuários
-- Login e logout
-- Criação de perguntas
-- Listagem de perguntas
-- Pesquisa por perguntas
-- Filtro por categorias
-- Respostas em perguntas
-- Curtidas em perguntas e respostas
-- Marcação de melhor resposta
-- Edição e exclusão de perguntas pelo autor
-- Painel administrativo
+---
 
-## Tecnologias utilizadas
+## 📸 Preview do projeto
 
-- Python
-- Django
-- SQLite
-- HTML
-- CSS
-- Git e GitHub
+![Preview do DevForum](docs/preview-devforum.png)
 
-## Como rodar o projeto
+---
 
-Clone o repositório:
+## 📌 Sobre o projeto
 
-```bash
-git clone LINK_DO_REPOSITORIO
+Neste projeto, eu criei uma aplicação web parecida com um fórum, onde o usuário consegue publicar uma pergunta e receber respostas de outros usuários.
+
+Durante o desenvolvimento, trabalhei com a estrutura padrão do Django, separando o projeto em app, models, views, urls, forms, templates e arquivos estáticos.
+
+Também usei o sistema de autenticação do próprio Django para fazer cadastro, login e logout dos usuários.
+
+---
+
+## 🚀 Funcionalidades
+
+O projeto possui as seguintes funcionalidades:
+
+- Cadastro de usuários;
+- Login e logout;
+- Criação de perguntas;
+- Listagem de perguntas na página inicial;
+- Pesquisa de perguntas;
+- Filtro por categoria;
+- Página de detalhes da pergunta;
+- Criação de respostas;
+- Curtidas em perguntas e respostas;
+- Marcação de melhor resposta;
+- Edição e exclusão de perguntas pelo autor;
+- Painel administrativo do Django.
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+As tecnologias usadas no projeto foram:
+
+- **Python**
+- **Django**
+- **SQLite**
+- **HTML5**
+- **CSS3**
+- **Git**
+- **GitHub**
+- **VS Code**
+
+---
+
+## 📁 Estrutura resumida
+
+```text
+DevForum/
+├── devforum/
+├── forum/
+│   ├── templates/
+│   ├── admin.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+├── static/
+│   └── forum/
+│       └── css/
+│           └── style.css
+├── docs/
+│   └── preview-devforum.png
+├── manage.py
+├── README.md
+├── requirements.txt
+└── .gitignore
