@@ -2,24 +2,37 @@
 
 {% block content %}
 <section class="hero">
-    <h1>Mini Fórum de Perguntas e Respostas</h1>
-    <p>Publique dúvidas, responda colegas e compartilhe conhecimento.</p>
+    <div class="hero-content">
+        <h1>Mini Fórum de Perguntas e Respostas</h1>
+        <p>Publique dúvidas, responda colegas e compartilhe conhecimento.</p>
 
-    {% if user.is_authenticated %}
-        <a href="{% url 'question_create' %}" class="btn">Criar pergunta</a>
-    {% else %}
-        <a href="{% url 'register' %}" class="btn">Criar conta grátis</a>
-    {% endif %}
+        {% if user.is_authenticated %}
+            <a href="{% url 'question_create' %}" class="btn hero-btn">
+                ✏️ Criar pergunta
+            </a>
+        {% else %}
+            <a href="{% url 'register' %}" class="btn hero-btn">
+                Criar conta grátis
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="hero-decoration decoration-one"></div>
+    <div class="hero-decoration decoration-two"></div>
+    <div class="dots"></div>
 </section>
 
 <section class="filters">
     <form method="get" class="search-form">
-        <input 
-            type="text" 
-            name="q" 
-            value="{{ search }}" 
-            placeholder="Pesquisar pergunta, texto ou usuário..."
-        >
+        <div class="search-box">
+            <span class="search-icon">🔎</span>
+            <input 
+                type="text" 
+                name="q" 
+                value="{{ search }}" 
+                placeholder="Pesquisar pergunta, texto ou usuário..."
+            >
+        </div>
 
         <select name="categoria">
             <option value="">Todas as categorias</option>
