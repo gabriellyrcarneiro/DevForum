@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="card detail-card">
+    <div class="question-header">
+        <h1>{{ question.title }}</h1>
+
+        {% if question.is_solved %}
+            <span class="badge solved">Resolvida</span>
+        {% else %}
+            <span class="badge open">Aberta</span>
+        {% endif %}
+    </div>
+
+    <p class="question-body full">
+        {{ question.body|linebreaks }}
+    </p>
+
+    <div class="meta">
+        <span>👤 {{ question.author.username }}</span>
+
+        {% if question.category %}
+            <span>🏷️ {{ question.category.name }}</span>
+        {% endif %}
+
+        <span>❤️ {{ question.total_likes }} curtida(s)</span>
+        <span>📅 {{ question.created_at|date:"d/m/Y H:i" }}</span>
+    </div>
+
+    <div class="actions">
+        {% if user.is_authenticated %}
+            <a href="{% url 'question_like' question.pk %}" class="btn secondary">Curtir pergunta</a>
+        {% endif %}
+
+        {% if user == question.author %}
+            <a href="{% url 'question_update' question.pk %}" class="btn secondary">Editar</a>
+            <a href="{% url 'question_delete' question.pk %}" class="btn danger">Excluir</a>
+        {% endif %}
+    </div>
+</article>
+
+<section class="answers">
+    <h2>Respostas</h2>
+
+    {% for answer in answers %}
+        <article class="card answer-card {% if answer.is_best %}best-answer{% endif %}">
+            {% if answer.is_best %}
+                <div class="best-label">✅ Melhor resposta</div>
+            {% endif %}
+
+            <p>{{ answer.body|linebreaks }}</p>
+
+            <div class="meta">
+                <span>👤 {{ answer.author.username }}</span>
+                <span>❤️ {{ answer.total_likes }} curtida(s)</span>
+                <span>📅 {{ answer.created_at|date:"d/m/Y H:i" }}</span>
+            </div>
+
+            <div class="actions">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'answer_like' answer.pk %}" class="btn secondary">Curtir resposta</a>
+                {% endif %}
+
+                {% if user == question.author and not answer.is_best %}
+                    <a href="{% url 'mark_best_answer' answer.pk %}" class="btn success">
+                        Marcar como melhor resposta
+                    </a>
+                {% endif %}
+            </div>
+        </article>
+    {% empty %}
+        <div class="empty">
+            <p>Ainda não há respostas. Seja o primeiro a responder.</p>
+        </div>
+    {% endfor %}
+</section>
+
+<section class="card form-card">
+    <h2>Responder</h2>
+
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Publicar resposta</button>
+        </form>
+    {% else %}
+        <p>Você precisa estar logado para responder.</p>
+        <a href="{% url 'login' %}" class="btn">Entrar</a>
+    {% endif %}
+</section>
+{% endblock %}

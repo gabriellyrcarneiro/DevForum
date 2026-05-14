@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card form-card">
+    {% if object %}
+        <h1>Editar pergunta</h1>
+    {% else %}
+        <h1>Nova pergunta</h1>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn">Salvar</button>
+        <a href="{% url 'home' %}" class="btn secondary">Cancelar</a>
+    </form>
+</section>
+{% endblock %}

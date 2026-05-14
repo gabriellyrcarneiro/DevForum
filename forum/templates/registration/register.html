@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card form-card">
+    <h1>Criar conta</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn">Cadastrar</button>
+    </form>
+
+    <p class="help-text">
+        Já tem conta?
+        <a href="{% url 'login' %}">Entrar</a>.
+    </p>
+</section>
+{% endblock %}

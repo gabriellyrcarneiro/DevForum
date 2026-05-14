@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h1>Mini Fórum de Perguntas e Respostas</h1>
+    <p>Publique dúvidas, responda colegas e compartilhe conhecimento.</p>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'question_create' %}" class="btn">Criar pergunta</a>
+    {% else %}
+        <a href="{% url 'register' %}" class="btn">Criar conta grátis</a>
+    {% endif %}
+</section>
+
+<section class="filters">
+    <form method="get" class="search-form">
+        <input 
+            type="text" 
+            name="q" 
+            value="{{ search }}" 
+            placeholder="Pesquisar pergunta, texto ou usuário..."
+        >
+
+        <select name="categoria">
+            <option value="">Todas as categorias</option>
+
+            {% for category in categories %}
+                <option value="{{ category.slug }}" {% if category.slug == category_slug %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Pesquisar</button>
+    </form>
+</section>
+
+<section class="question-list">
+    {% for question in questions %}
+        <article class="card question-card">
+            <div class="question-header">
+                <h2>
+                    <a href="{% url 'question_detail' question.pk %}">
+                        {{ question.title }}
+                    </a>
+                </h2>
+
+                {% if question.is_solved %}
+                    <span class="badge solved">Resolvida</span>
+                {% else %}
+                    <span class="badge open">Aberta</span>
+                {% endif %}
+            </div>
+
+            <p class="question-body">
+                {{ question.body|truncatewords:30 }}
+            </p>
+
+            <div class="meta">
+                <span>👤 {{ question.author.username }}</span>
+
+                {% if question.category %}
+                    <span>🏷️ {{ question.category.name }}</span>
+                {% endif %}
+
+                <span>💬 {{ question.answer_count }} resposta(s)</span>
+                <span>❤️ {{ question.total_likes }} curtida(s)</span>
+                <span>📅 {{ question.created_at|date:"d/m/Y H:i" }}</span>
+            </div>
+        </article>
+    {% empty %}
+        <div class="empty">
+            <h2>Nenhuma pergunta encontrada.</h2>
+            <p>Seja o primeiro a publicar uma dúvida.</p>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}

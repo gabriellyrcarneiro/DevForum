@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card form-card">
+    <h1>Excluir pergunta</h1>
+
+    <p>Tem certeza que deseja excluir a pergunta abaixo?</p>
+
+    <blockquote>
+        {{ object.title }}
+    </blockquote>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn danger">Sim, excluir</button>
+        <a href="{% url 'question_detail' object.pk %}" class="btn secondary">Cancelar</a>
+    </form>
+</section>
+{% endblock %}
