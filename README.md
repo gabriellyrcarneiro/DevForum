@@ -6,6 +6,12 @@ A ideia do projeto foi criar uma aplicação simples, funcional e organizada, on
 
 ---
 
+## 🧑‍🎓 Alunos 
+**Gabrielly Rodrigues**
+**Geovanna Almeida**
+**Isabelle**
+**Josinaldo Xavier**
+
 ## 📸 Preview do projeto
 
 <img width="1580" height="745" alt="Captura de tela 2026-05-14 011107" src="https://github.com/user-attachments/assets/43264940-c57e-48a6-8523-5f795518865a" />
