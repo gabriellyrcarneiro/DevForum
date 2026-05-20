@@ -16,6 +16,7 @@ A ideia do projeto foi criar uma aplicação simples, funcional e organizada, on
 **Josinaldo Xavier**
 
 **Gabriela Sabino**
+
 ---
 
 ## 📸 Preview do projeto
